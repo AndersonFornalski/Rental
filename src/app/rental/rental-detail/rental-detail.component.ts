@@ -19,14 +19,13 @@ export class RentalDetailComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(
       (data)=>{
-//        this.currentId = data["id"];
         console.log(data);
-        this.getRental(data["id"]);
+        this.getRentalss(data["id"])
       }
     )
   }
 
-  getRental(rentalId: String){
+  getRentalss(rentalId: String){
     this.rentalService.getRentalsById(rentalId)
       .subscribe((rents: Rental) =>{
         this.rents = rents 

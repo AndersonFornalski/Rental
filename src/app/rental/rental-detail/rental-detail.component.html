@@ -2,8 +2,10 @@
 
 <div *ngIf="rents">
     <div>{{rents.title}}</div>
+    <div>{{rents.image}}</div>
     <div>{{rents.description}}</div>
     <div>{{rents.city}}</div>
     <div>{{rents.street}}</div>
-    <div>{{rents.dailyRate}}</div>
+    <div> $$ {{rents.dayleRate}}.000,00</div>
+    <div>{{rents.shared}}</div>
 </div>

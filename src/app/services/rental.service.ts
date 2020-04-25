@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Rental } from '../model/rental.model';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RentalService {
 
-  rentalss: any[] = [
+ /* rentalss: any[] = [
     {
       id: 1,
       title:"House ",
@@ -60,23 +61,21 @@ export class RentalService {
   shared: false,
   createdAt:"19/05/2019"  
   }
-  ];
+  ];*/
   
-  constructor() { }
 
- public getRentalsById(rentalId: String): Observable<Rental>{
-   return new Observable<Rental>((observer)=>{
-      setTimeout(()=>{
-        const foundRental = this.rentalss.find((rental)=>{
-          return rental.id == rentalId;
-        });
-        observer.next(foundRental);
-      }, 500)
-   });
+
+  constructor(private http: HttpClient) {}
+
+  ApiNodeJs = "http://localhost:3000/api/v1/rentals"
+
+ public getRentalsById(rentalId: String): Observable<any>{
+  return this.http.get(`${this.ApiNodeJs}/`+ rentalId);
 }
 
-  
- public getRentals(): any[]{
-   return this.rentalss;
+ public getRentals():  Observable<any>{
+  return this.http.get(`${this.ApiNodeJs}`);
   }
+
+
 }
